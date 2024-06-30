@@ -13,13 +13,13 @@ export const ListStations = (props: ListStationsProps) => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-end">
+      <div className="flex items-center	justify-between">
+        <h2>Favorite Radios</h2>
+
         <div className="relative flex items-center">
           <Search query={query} setQuery={setQuery} />
         </div>
       </div>
-
-      <h2>Favorite Radios</h2>
 
       <div className="space-y-6 border rounded-lg p-4 lg:p-6">
         <div className="border-b pb-4 text-sm">

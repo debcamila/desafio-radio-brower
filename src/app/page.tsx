@@ -1,20 +1,31 @@
 "use client";
 import { ListStations } from "@/components/ListStations";
 import SideBar from "@/components/SideBar";
-import { useState } from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [favorites, setFavorites] = useState<RadioRequest[]>([]);
+  const [favorites, setFavorites] = useState<RadioRequest[]>(() => {
+    const saved = localStorage.getItem("favorites");
+    const initialValue = JSON.parse(saved || "[]");
+    return initialValue || [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   return (
     <div className="min-h-full relative">
-      <div>
-        <div className="hidden lg:block">
-          <SideBar favorites={favorites} setFavorites={setFavorites} />
+      <div className="flex">
+        <div className="hidden lg:block w-1/5">
+          <ScrollArea className="h-screen">
+            <SideBar favorites={favorites} setFavorites={setFavorites} />
+          </ScrollArea>
         </div>
 
-        <main className="py-8 px-6 lg:py-14 lg:px-8 lg:ml-80 space-y-8">
-          <div className="flex items-center justify-between">
+        <main className="m-8 space-y-8 flex-1">
+          <div className="flex">
             <h1 className="font-semibold text-2xl tracking-tight">
               Radio Browser Challenge
             </h1>

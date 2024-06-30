@@ -38,19 +38,22 @@ function SideBar(props: SideBarProps) {
   }, [query, page]);
 
   return (
-    <div>
-      <Search query={query} setQuery={setQuery} />
+    <div className="m-2">
+      <div className="my-4">
+        <Search query={query} setQuery={setQuery} />
+      </div>
       <div>
         {radios.map((radio, index) => (
-          <SearchStationCard
-            key={index}
-            radio={radio}
-            isFavorite={favorites.some(
-              (favorite) => favorite.stationuuid === radio.stationuuid
-            )}
-            addToFavorite={addToFavorite}
-            removeFromFavorite={removeFromFavorite}
-          />
+          <div className="my-2" key={index}>
+            <SearchStationCard
+              radio={radio}
+              isFavorite={favorites.some(
+                (favorite) => favorite.stationuuid === radio.stationuuid
+              )}
+              addToFavorite={addToFavorite}
+              removeFromFavorite={removeFromFavorite}
+            />
+          </div>
         ))}
       </div>
     </div>

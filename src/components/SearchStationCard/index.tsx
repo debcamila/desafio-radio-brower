@@ -13,12 +13,12 @@ export const SearchStationCard = (props: SearchStationCardProps) => {
   const { radio, isFavorite, addToFavorite, removeFromFavorite } = props;
 
   return (
-    <div className="bg-muted/40 rounded-lg p-4 flex items-center gap-4">
+    <div className="bg-muted/40 rounded-lg p-2 flex items-center gap-4">
       <div className="text-sm line-clamp-2 font-medium">{radio.name}</div>
       <div className="ml-auto">
         {isFavorite ? (
           <Button size="icon" onClick={() => removeFromFavorite(radio)}>
-            <Heart className="size-4 fill-primary-foreground" />
+            <Heart className="size-4 fill-red-600 stroke-red-600" />
           </Button>
         ) : (
           <Button size="icon" onClick={() => addToFavorite(radio)}>
