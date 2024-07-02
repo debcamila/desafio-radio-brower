@@ -5,10 +5,11 @@ import { FavoriteStationCard } from "../FavoriteStationCard";
 type ListStationsProps = {
   radios: RadioRequest[];
   isFavorite: boolean;
+  deleteFavorite: (e: string) => void;
 };
 
 export const ListStations = (props: ListStationsProps) => {
-  const { radios, isFavorite } = props;
+  const { radios, isFavorite, deleteFavorite } = props;
   const [query, setQuery] = useState("");
 
   return (
@@ -27,7 +28,12 @@ export const ListStations = (props: ListStationsProps) => {
         </div>
 
         {radios.map((radio, index) => (
-          <FavoriteStationCard key={index} station={radio} isFavorite={true} />
+          <FavoriteStationCard
+            key={index}
+            station={radio}
+            isFavorite={true}
+            deleteFavorite={deleteFavorite}
+          />
         ))}
       </div>
     </div>

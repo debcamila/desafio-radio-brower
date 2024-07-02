@@ -11,6 +11,14 @@ export default function Home() {
     return initialValue || [];
   });
 
+  function deleteFavorite(stationuuid: string) {
+    let newFavorites = [...favorites];
+    newFavorites = newFavorites.filter(
+      (item) => item.stationuuid != stationuuid
+    );
+    setFavorites(newFavorites);
+  }
+
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
@@ -31,7 +39,11 @@ export default function Home() {
             </h1>
           </div>
 
-          <ListStations radios={favorites} isFavorite={true} />
+          <ListStations
+            radios={favorites}
+            isFavorite={true}
+            deleteFavorite={deleteFavorite}
+          />
         </main>
       </div>
     </div>
