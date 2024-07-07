@@ -3,6 +3,7 @@ type RadioRequest = {
   stationuuid: string;
   serveruuid: string;
   name: string;
+  newFavoriteName?: string;
   url: string;
   url_resolved: string;
   homepage: string;

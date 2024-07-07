@@ -6,10 +6,11 @@ type ListStationsProps = {
   radios: RadioRequest[];
   isFavorite: boolean;
   deleteFavorite: (e: string) => void;
+  editFavorite: (id: string, newName: string) => void;
 };
 
 export const ListStations = (props: ListStationsProps) => {
-  const { radios, isFavorite, deleteFavorite } = props;
+  const { radios, isFavorite, deleteFavorite, editFavorite } = props;
   const [query, setQuery] = useState("");
 
   return (
@@ -33,6 +34,7 @@ export const ListStations = (props: ListStationsProps) => {
             station={radio}
             isFavorite={true}
             deleteFavorite={deleteFavorite}
+            editFavorite={editFavorite}
           />
         ))}
       </div>

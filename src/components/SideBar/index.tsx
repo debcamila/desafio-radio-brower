@@ -52,6 +52,11 @@ function SideBar(props: SideBarProps) {
               )}
               addToFavorite={addToFavorite}
               removeFromFavorite={removeFromFavorite}
+              favoriteInfo={
+                favorites.filter(
+                  (favorite) => favorite.stationuuid === radio.stationuuid
+                )[0]
+              }
             />
           </div>
         ))}

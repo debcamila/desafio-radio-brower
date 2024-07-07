@@ -7,14 +7,20 @@ type SearchStationCardProps = {
   isFavorite: boolean;
   addToFavorite: (f: RadioRequest) => void;
   removeFromFavorite: (f: RadioRequest) => void;
+  favoriteInfo: RadioRequest;
 };
 
 export const SearchStationCard = (props: SearchStationCardProps) => {
-  const { radio, isFavorite, addToFavorite, removeFromFavorite } = props;
+  const { radio, isFavorite, addToFavorite, removeFromFavorite, favoriteInfo } =
+    props;
 
   return (
     <div className="bg-muted/40 rounded-lg p-2 flex items-center gap-4">
-      <div className="text-sm line-clamp-2 font-medium">{radio.name}</div>
+      <div className="text-sm line-clamp-2 font-medium">
+        {favoriteInfo?.newFavoriteName
+          ? favoriteInfo?.newFavoriteName
+          : radio.name}
+      </div>
       <div className="ml-auto">
         {isFavorite ? (
           <Button size="icon" onClick={() => removeFromFavorite(radio)}>

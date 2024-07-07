@@ -19,6 +19,21 @@ export default function Home() {
     setFavorites(newFavorites);
   }
 
+  function editFavorite(stationuuid: string, newName: string) {
+    let newFavorites = [...favorites];
+    newFavorites = newFavorites.map((item) => {
+      if (stationuuid !== item.stationuuid) {
+        return item;
+      } else {
+        return {
+          ...item,
+          newFavoriteName: newName,
+        };
+      }
+    });
+    setFavorites(newFavorites);
+  }
+
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
@@ -43,6 +58,7 @@ export default function Home() {
             radios={favorites}
             isFavorite={true}
             deleteFavorite={deleteFavorite}
+            editFavorite={editFavorite}
           />
         </main>
       </div>
